@@ -113,8 +113,8 @@ nav a:hover::after {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 90vh;
+  justify-content: center;
 }
 
 /* subtle floating particles */
@@ -230,58 +230,46 @@ nav a:hover::after {
 }
 
 /* ── SCROLL REVEAL BASE ──────────────── */
-.reveal {
+.reveal.hidden {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(40px);
+}
+.reveal {
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.reveal-left.hidden {
+  opacity: 0;
+  transform: translateX(-40px);
 }
 .reveal-left {
-  opacity: 0;
-  transform: translateX(-32px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal-left.visible {
-  opacity: 1;
-  transform: translateX(0);
+.reveal-right.hidden {
+  opacity: 0;
+  transform: translateX(40px);
 }
 .reveal-right {
-  opacity: 0;
-  transform: translateX(32px);
   transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal-right.visible {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 /* staggered children */
-.stagger > * {
+.stagger.hidden > * {
   opacity: 0;
   transform: translateY(24px);
+}
+.stagger > * {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.stagger.visible > *:nth-child(1) {
-  opacity: 1;
-  transform: translateY(0);
+.stagger > *:nth-child(1) {
   transition-delay: 0s;
 }
-.stagger.visible > *:nth-child(2) {
-  opacity: 1;
-  transform: translateY(0);
+.stagger > *:nth-child(2) {
   transition-delay: 0.1s;
 }
-.stagger.visible > *:nth-child(3) {
-  opacity: 1;
-  transform: translateY(0);
+.stagger > *:nth-child(3) {
   transition-delay: 0.2s;
 }
-.stagger.visible > *:nth-child(4) {
-  opacity: 1;
-  transform: translateY(0);
+.stagger > *:nth-child(4) {
   transition-delay: 0.3s;
 }
 
@@ -346,21 +334,56 @@ section {
 .tag-pill {
   background: var(--burgundy);
   color: var(--blush-light);
-  border-radius: 2rem;
-  padding: 0.75rem 1.2rem;
-  font-size: 0.85rem;
+  border-radius: 1rem;
+  padding: 1rem 1.2rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.02em;
-  transition: transform 0.25s ease, background 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
+  border-left: 3px solid var(--blush);
+}
+.tag-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(232, 200, 204, 0.08) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+.tag-pill .pill-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blush);
+  opacity: 0.6;
+  margin-bottom: 0.3rem;
+}
+.tag-pill .pill-title {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--blush-light);
+  line-height: 1.2;
+}
+.tag-pill .pill-years {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--blush);
+  opacity: 0.7;
+  margin-top: 0.3rem;
+  letter-spacing: 0.04em;
 }
 .tag-pill:hover {
   transform: translateX(6px);
-  background: var(--burgundy-mid);
-}
-.tag-pill.empty {
-  background: var(--burgundy-mid);
-  min-height: 3rem;
+  box-shadow: -4px 0 16px rgba(74, 16, 32, 0.2);
 }
 
 /* ── SKILLS ──────────────────────────── */
@@ -373,32 +396,26 @@ section {
 .skill-card {
   background: var(--blush);
   border-radius: 1rem;
-  aspect-ratio: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-  color: var(--burgundy);
-  font-weight: 500;
-  text-align: center;
-  padding: 0.9rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.2rem 1rem;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
     background 0.25s ease;
   cursor: default;
 }
 .skill-card:hover {
-  transform: translateY(-6px) scale(1.04);
+  transform: translateY(-6px) scale(1.02);
   background: var(--blush-light);
 }
-
-/* ensure heading and list stack and list is left-aligned within card */
 .skill-card h3 {
-  margin: 0;
+  font-family: var(--serif);
   font-size: 1rem;
   font-weight: 600;
   color: var(--burgundy);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
 }
 .skill-card ul {
   list-style: none;
@@ -406,75 +423,123 @@ section {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  align-items: flex-start;
-  color: var(--burgundy);
-  font-size: 0.85rem;
+  gap: 0.3rem;
 }
-.skill-card li::before {
-  content: "•";
-  display: inline-block;
-  width: 1em;
-  margin-left: -0.2em;
+.skill-card ul li {
+  font-size: 0.78rem;
   color: var(--burgundy-mid);
-  font-size: 0.8rem;
-  margin-right: 0.35rem;
+  padding-left: 0.8rem;
+  position: relative;
+}
+.skill-card ul li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--burgundy);
+  font-weight: bold;
 }
 
 /* ── PROJECTS ────────────────────────── */
-.projects-carousel {
-  position: relative;
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-
 .project-card {
   background: var(--burgundy-mid);
-  border-radius: 1rem;
-  min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blush);
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 1.2rem;
   overflow: hidden;
   position: relative;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
 }
-.project-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(232, 200, 204, 0.05) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(74, 16, 32, 0.25);
 }
-
-.carousel-controls {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.2rem;
+.project-inner {
+  padding: 1.6rem 1.6rem 1.2rem;
 }
-.carousel-btn {
-  background: none;
-  cursor: pointer;
+.project-number {
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  color: var(--blush);
+  opacity: 0.5;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.4rem;
+}
+.project-title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 600;
   color: var(--blush-light);
-  font-size: 1.4rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 50%;
-  border: 1.5px solid var(--blush);
-  line-height: 1;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+.project-desc {
+  font-size: 0.82rem;
+  color: var(--blush);
+  opacity: 0.85;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+.project-tag {
+  background: rgba(232, 200, 204, 0.12);
+  color: var(--blush);
+  border: 1px solid rgba(232, 200, 204, 0.2);
+  border-radius: 2rem;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--blush-light);
+  background: rgba(232, 200, 204, 0.1);
+  border: 1px solid rgba(232, 200, 204, 0.25);
+  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.78rem;
+  text-decoration: none;
+  letter-spacing: 0.04em;
   transition: background 0.2s, transform 0.2s;
 }
-.carousel-btn:hover {
-  background: var(--burgundy-mid);
-  transform: scale(1.1);
+.project-link:hover {
+  background: rgba(232, 200, 204, 0.2);
+  transform: translateY(-2px);
 }
-.carousel-btn:active {
-  transform: scale(0.95);
+.project-link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blush) 0%, transparent 100%);
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+.project-card:hover::before {
+  opacity: 0.7;
 }
 
 /* ── FOOTER ──────────────────────────── */
@@ -525,19 +590,20 @@ footer {
 #cursor-glow {
   pointer-events: none;
   position: fixed;
-  width: 320px;
-  height: 320px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(107, 31, 53, 0.35) 0%,
-    rgba(74, 16, 32, 0.12) 40%,
+    rgba(107, 31, 53, 0.45) 0%,
+    rgba(74, 16, 32, 0.15) 45%,
     transparent 70%
   );
   transform: translate(-50%, -50%);
   z-index: 9998;
-  transition: left 0.08s ease, top 0.08s ease;
   mix-blend-mode: multiply;
+  top: -999px;
+  left: -999px;
 }
 
 @media (max-width: 480px) {

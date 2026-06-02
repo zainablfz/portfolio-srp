@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- PAGE LOAD CURTAIN -->
+    <div id="curtain"><span>Zainab el Faiz</span></div>
+
+    <!-- CURSOR GLOW -->
+    <div id="cursor-glow"></div>
+
+    <!-- NAV -->
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -26,7 +33,6 @@
 
       <div class="hero-contacts">
         <a href="https://linkedin.com/in/zainablfz" target="_blank">
-          <!-- LinkedIn icon -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
@@ -35,7 +41,6 @@
           Zainab el Faiz
         </a>
         <a href="mailto:zainablfz@gmail.com">
-          <!-- Mail icon -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
@@ -44,7 +49,6 @@
           zainablfz@gmail.com
         </a>
         <a href="https://github.com/zainablfz" target="_blank">
-          <!-- GitHub icon -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
@@ -58,9 +62,9 @@
     <!-- ABOUT -->
     <div id="about" style="background: var(--blush-light)">
       <section>
-        <span class="pill-heading">About me</span>
+        <span class="pill-heading reveal">About me</span>
         <div class="about-grid">
-          <p class="about-text">
+          <p class="about-text reveal-left">
             Hi, I'm Zainab — a frontend developer who finds her sweet spot right
             where design meets code. I'm currently studying HBO Media, and what
             drives me is the idea that a website should never just function — it
@@ -76,9 +80,17 @@
             always experimenting, and always looking for ways to make the web a
             little more beautiful.
           </p>
-          <div class="about-tags">
-            <div class="tag-pill">AD Frontend development 2023 - 2025</div>
-            <div class="tag-pill empty">HBO MultiMedia Design 2025 - heden</div>
+          <div class="about-tags reveal-right">
+            <div class="tag-pill">
+              <span class="pill-label">Opleiding</span>
+              <span class="pill-title">AD Frontend Development</span>
+              <span class="pill-years">2023 – 2025</span>
+            </div>
+            <div class="tag-pill">
+              <span class="pill-label">Huidig</span>
+              <span class="pill-title">HBO MultiMedia Design</span>
+              <span class="pill-years">2025 – heden</span>
+            </div>
           </div>
         </div>
       </section>
@@ -87,8 +99,8 @@
     <!-- SKILLS -->
     <div id="skills" class="section-bg-dark">
       <div class="inner">
-        <span class="pill-heading">Skills</span>
-        <div class="skills-grid">
+        <span class="pill-heading reveal">Skills</span>
+        <div class="skills-grid stagger">
           <div class="skill-card">
             <h3>Technical Skills</h3>
             <ul>
@@ -125,16 +137,133 @@
     <!-- PROJECTS -->
     <div id="projects" style="background: var(--blush-light)">
       <section>
-        <span class="pill-heading">Projects</span>
-        <div class="projects-carousel">
-          <div class="project-card" id="projectCard"></div>
-          <div class="carousel-controls">
-            <button class="carousel-btn" onclick="prevProject()">
-              &#8592;
-            </button>
-            <button class="carousel-btn" onclick="nextProject()">
-              &#8594;
-            </button>
+        <span class="pill-heading reveal">Projects</span>
+        <div class="projects-list">
+          <!-- PROJECT 1 -->
+          <div class="project-card reveal">
+            <div class="project-inner">
+              <p class="project-number">01</p>
+              <h3 class="project-title">Merlin's Book of Potions</h3>
+              <p class="project-desc">
+                Een interactieve webgame voor opdrachtgever Merlin.studios
+                waarbij gebruikers magische drankjes kunnen brouwen door
+                ingrediënten te kiezen en in een ketel te slepen. Gebouwd
+                volgens het principe van Progressive Enhancement — van
+                functionele HTML tot visuele CSS en interactieve JavaScript.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">Express</span>
+                <span class="project-tag">EJS</span>
+                <span class="project-tag">CSS Custom Properties</span>
+                <span class="project-tag">Progressive Enhancement</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="project-link"
+                  href="https://github.com/zainablfz/proof-of-concept"
+                  target="_blank"
+                  ><svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                    />
+                  </svg>
+                  GitHub</a
+                >
+                <a
+                  class="project-link"
+                  href="https://proof-of-concept-37tl.onrender.com/"
+                  target="_blank"
+                  ><svg viewBox="0 0 24 24">
+                    <path
+                      d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6h-2v6H5V5z"
+                    />
+                  </svg>
+                  Live demo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 2 -->
+          <div class="project-card reveal">
+            <div class="project-inner">
+              <p class="project-number">02</p>
+              <h3 class="project-title">WestConnect</h3>
+              <p class="project-desc">
+                Een community-platform waar vraag en aanbod in Amsterdam West
+                samenkomen. Buurtbewoners kunnen initiatieven bekijken, liken en
+                zelf plaatsen — van vrijwilligerswerk tot buurtfeesten. Verrijkt
+                met Progressive Enhancement voor een optimale gebruikerservaring
+                op elk apparaat en elke browser.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">Express</span>
+                <span class="project-tag">EJS</span>
+                <span class="project-tag">Progressive Enhancement</span>
+                <span class="project-tag">CSS</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="project-link"
+                  href="https://github.com/itsValyria/user-experience-enhanced-website"
+                  target="_blank"
+                  ><svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                    />
+                  </svg>
+                  GitHub</a
+                >
+                <a
+                  class="project-link"
+                  href="https://user-experience-enhanced-website-iwna.onrender.com/"
+                  target="_blank"
+                  ><svg viewBox="0 0 24 24">
+                    <path
+                      d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6h-2v6H5V5z"
+                    />
+                  </svg>
+                  Live demo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 3 -->
+          <div class="project-card reveal">
+            <div class="project-inner">
+              <p class="project-number">03</p>
+              <h3 class="project-title">Red Pers</h3>
+              <p class="project-desc">
+                Een nieuwsplatform voor jonge, aspirerende journalisten. Red
+                Pers wilde afstappen van WordPress en een op maat gemaakte
+                website laten bouwen. De site haalt artikelen op via de
+                WordPress API en toont ze in een overzichtspagina met
+                doorklikbare detailpagina's.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">Express</span>
+                <span class="project-tag">EJS</span>
+                <span class="project-tag">WordPress API</span>
+                <span class="project-tag">CSS</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="project-link"
+                  href="https://github.com/zainablfz/server-side-rendering-server-side-website"
+                  target="_blank"
+                  ><svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                    />
+                  </svg>
+                  GitHub</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </section>
