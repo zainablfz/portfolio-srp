@@ -621,3 +621,43 @@ footer {
     display: none;
   }
 }
+
+/* ── READ MORE LINK ─────────────────── */
+.read-more-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  text-decoration: none;
+  color: var(--blush);
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+  animation: heroFadeIn 0.8s ease 1.8s both;
+}
+.read-more-link:hover {
+  opacity: 1;
+}
+.read-more-link span {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: var(--sans);
+  font-weight: 300;
+}
+.arrow-bounce svg {
+  width: 22px;
+  height: 22px;
+  color: var(--blush);
+  animation: arrowBounce 1.8s ease-in-out infinite;
+}
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
